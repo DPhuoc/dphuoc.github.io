@@ -3,7 +3,7 @@ title: WannaGame Cyber Knight 2024
 published: 2024-06-24
 description: ''
 image: ''
-tags: ['Lattice', 'Math', 'AES']
+tags: ['Lattice', 'MATH', 'AES']
 category: 'CTF Writeups'
 draft: false 
 ---

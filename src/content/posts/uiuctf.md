@@ -7,8 +7,6 @@ tags: ['MATH', 'HASH']
 category: 'CTF Writeups'
 draft: false 
 ---
-# UIUCTF 2024
-
 Last weekend, I played UIUCTF 2024 with my team **thefwncrew**. My team finished top 16 in this CTF.
 
 ![alt text](image-1.png)
@@ -331,6 +329,64 @@ io.interactive()
 ```
 uiuctf{add1ti0n_i5_n0t_c0nc4t3n4ti0n}
 ```
+
+## Groups
+
+My friend told me that cryptography is unbreakable if moduli are Carmichael numbers instead of primes. I decided to use this CTF to test out this theory.
+
+``ncat --ssl groups.chal.uiuc.tf 1337``
+
+### Downloads
+
+- [challenge.py](https://uiuctf-2024-rctf-challenge-uploads.storage.googleapis.com/uploads/8cac43edf21c7fd322af3087e5387030fd60b9cb18a14c664abb5c280b30c579/challenge.py)
+
+### Solutions
+
+This problem we just generate Carmichael numbers and send it to server.
+
+```py
+from sage.all import *
+import operator
+ 
+first_primes = list(primes(10**7))
+ 
+factors = [2**3, 3, 5, 7, 11, 13, 17]
+lam = reduce(operator.mul, factors)
+ 
+P = []
+for p in primes(min(10000000, lam)):
+    if p < 400:
+        continue
+    if lam % p and lam % (p - 1) == 0:
+        P.append(p)
+ 
+prodlam = reduce(lambda a, b: a * b % lam, P)
+prod = reduce(lambda a, b: a * b, P)
+
+proof.arithmetic(False)
+ 
+while 1:
+    numlam = 1
+    num = 1
+    for i in range(20):
+        p = choice(P)
+        numlam = numlam * p % lam
+        num = num * p
+        if numlam != prodlam or prod % num != 0:
+            continue
+        q = prod // num
+        print("candidate", q)
+        print(factor(q))
+        break
+```
+
+Now, we have **q** and easily solve this problem by ``discrete_log`` in sagemath
+
+### FLAG
+```
+uiuctf{c4rm1ch43l_7adb8e2f019bb4e0e8cd54e92bb6e3893}
+```
+
 
 ## Key in a Haystack
 
