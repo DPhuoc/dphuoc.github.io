@@ -251,7 +251,7 @@ I'm pretty tired. Don't leak my flag while I'm asleep.
 
 ### Solutions
 
-It's is the basic Subset Sum Problem so I just put my script here.
+It's the basic Subset Sum Problem so I just put my script here.
 
 ```python
 from sage.all import *
