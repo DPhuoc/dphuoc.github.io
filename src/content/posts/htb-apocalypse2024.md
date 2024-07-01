@@ -1,6 +1,6 @@
 ---
 title: "Hack The Box: Apocalypse 2024"
-published: 2024-07-01
+published: 2024-04-06
 description: ''
 image: ''
 tags: ['HASH', 'AES', 'ECC']

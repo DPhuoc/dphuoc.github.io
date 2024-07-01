@@ -1,6 +1,6 @@
 ---
 title: WannaGame Cyber Knight 2024
-published: 2024-07-01
+published: 2024-06-24
 description: ''
 image: ''
 tags: ['Lattice', 'Math', 'AES']
